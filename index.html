@@ -23,10 +23,10 @@
             <div class="row">
                 <div class = "col-4 leftSection">
                         <div class = "leftSection">
-                                <div class = "searchSec">
-                                    <p >Search for a City:</p>
-                                            <p class = "col-sm-10" id="searchBar" contenteditable="true"></p>
-                                            <button id="searchBtn">search</button>
+                            <p class="indent">Search for a City:</p>
+                                    <div class = "row searchSec">
+                                            <p class = "col-sm-8" id="searchBar" contenteditable="true"></p>
+                                            <button type="button" class="btn btn-secondary btn-sm" id="searchBtn">search</button>
                                 </div>
                                 <br>
                                     <div class ="searchHistory"></div>
@@ -35,13 +35,17 @@
                 <div class ="rightSec col-8">
                     <p id= "locationName"></p>
                         <div class = "row thisWeather">
-                            <img class = "col-4" id = "currentWeatherImg">
-                            <div class = "col-8" id="currentWeatherDetails">
-                                <p id = "weatherState"></p>
-                                <p id = "windSpd"></p>
-                                <p id = "currentTemp"></p>
-                                <p id = "highTemp"></p>
-                                <p id = "lowTemp"></p>
+                            <div>
+                                    <img id = "currentWeatherImg" width="100px" height="100px">
+                                    <p class = "currentEl" id = "weatherState"></p>
+                            </div>
+                            <div id="currentWeatherDetails">
+                                <p class = "currentEl" id = "currentTemp"></p>
+                                <p class = "currentEl" id = "windSpd"></p>
+                                <p class = "currentEl" id = "highTemp"></p>
+                                <p class = "currentEl" id = "lowTemp"></p>
+                                <p class = "currentEl" id = "humid"></p>
+                                <p class = "currentEl" id = "uv"></p>
 
                             </div>
                         </div>
@@ -49,41 +53,41 @@
                         <div class = "forecastSec">
                             <h2>5-Day Forecast: </h2>
 
-                            <div class = "forecastDetail">
-                                <div id = "day0">
-                                    <img id = "day0Img">
-                                    <p id = "day0St"></p>
-                                    <p id = "day0Wd"></p>
-                                    <p id = "day0Hi"></p>
-                                    <p id = "day0Lo"></p>
+                            <div class = "row forecastDetail">
+                                <div class = "forecastDaily" id = "day0">
+                                    <p class = "forecastEl" id = "day0Date"></p>
+                                    <img  class = "forecastEl" id = "day0Img">
+                                    <p class = "forecastEl" id = "day0St"></p>
+                                    <p class = "forecastEl" id = "day0Temp"></p>
+                                    <p class = "forecastEl" id = "day0humid"></p>
                                 </div>
-                                <div id = "day1">
-                                    <img id = "day1Img">
-                                    <p id = "day1St"></p>
-                                    <p id = "day1Wd"></p>
-                                    <p id = "day1Hi"></p>
-                                    <p id = "day1Lo"></p>
+                                <div class = "forecastDaily" id = "day1">
+                                    <p class = "forecastEl" id = "day1Date"></p>
+                                    <img class = "forecastEl" id = "day1Img">
+                                    <p class = "forecastEl" id = "day1St"></p>
+                                    <p class = "forecastEl" id = "day1Temp"></p>
+                                    <p class = "forecastEl" id = "day1humid"></p>
                                 </div>
-                                <div id = "day2">
-                                    <img id = "day2Img">
-                                    <p id = "day2St"></p>
-                                    <p id = "day2Wd"></p>
-                                    <p id = "day2Hi"></p>
-                                    <p id = "day2Lo"></p>
+                                <div class = "forecastDaily" id = "day2">
+                                    <p class = "forecastEl" id = "day2Date"></p>
+                                    <img class = "forecastEl" id = "day2Img">
+                                    <p class = "forecastEl" id = "day2St"></p>
+                                    <p class = "forecastEl" id = "day2Temp"></p>
+                                    <p class = "forecastEl" id = "day2humid"></p>
                                 </div>
-                                <div id = "day3">
-                                    <img id = "day3Img">
-                                    <p id = "day3St"></p>
-                                    <p id = "day3Wd"></p>
-                                    <p id = "day3Hi"></p>
-                                    <p id = "day3Lo"></p>
+                                <div class = "forecastDaily" id = "day3">
+                                    <p class = "forecastEl" id = "day3Date"></p>
+                                    <img  class = "forecastEl" id = "day3Img">
+                                    <p class = "forecastEl" id = "day3St"></p>
+                                    <p class = "forecastEl" id = "day3Temp"></p>
+                                    <p class = "forecastEl" id = "day3humid"></p>
                                 </div>
-                                <div id = "day4">
-                                    <img id = "day4Img">
-                                    <p id = "day4St"></p>
-                                    <p id = "day4Wd"></p>
-                                    <p id = "day4Hi"></p>
-                                    <p id = "day4Lo"></p>
+                                <div class = "forecastDaily" id = "day4">
+                                    <p class = "forecastEl" id = "day4Date"></p>
+                                    <img class = "forecastEl" id = "day4Img">
+                                    <p class = "forecastEl" id = "day4St"></p>
+                                    <p class = "forecastEl" id = "day4Temp"></p>
+                                    <p class = "forecastEl" id = "day4humid"></p>
                                 </div>
                                 
                         </div>

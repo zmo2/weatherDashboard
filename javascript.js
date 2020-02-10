@@ -2,8 +2,8 @@ $(document).ready(function(){
     var historicalSearches = []
     var frontUrl = "https://api.openweathermap.org/data/2.5/weather?q="  
     var forecastFrontUrl = "https://api.openweathermap.org/data/2.5/forecast?q="
-    var geoCoorUrl = "http://api.openweathermap.org/data/2.5/weather?"
-    var geoCoorForecast = "http://api.openweathermap.org/data/2.5/forecast?"
+    var geoCoorUrl = "https://api.openweathermap.org/data/2.5/weather?"
+    var geoCoorForecast = "https://api.openweathermap.org/data/2.5/forecast?"
     var uviUrl = "https://api.openweathermap.org/data/2.5/uvi?"
     var apiKey = "&units=imperial&appid=1a6304f914f966e5dc4a8226a424190d" 
 
@@ -110,7 +110,7 @@ function dateConvert(unixDate){
 function displayApiDataCurrent (data){
                     $("#locationName").text(data.name + " " + dateConvert(data.dt))
                     var imgId = data.weather[0].icon
-                    var tempImgUrl = "http://openweathermap.org/img/wn/" + imgId + "@2x.png"
+                    var tempImgUrl = "https://openweathermap.org/img/wn/" + imgId + "@2x.png"
                     $("#currentWeatherImg").attr("src", tempImgUrl)
                     $("#weatherState").text(data.weather[0].description)
                     $("#windSpd").text("Wind Speed: " + data.wind.speed + " MPH")
@@ -132,7 +132,7 @@ function displayApiDataForecast(data){
     for (i=7; i<47; i+=8){
             $("#day" + counter + "Date").text(dateConvert(data.list[i].dt))
             var imgId = data.list[i].weather[0].icon
-            var tempImgUrl = "http://openweathermap.org/img/wn/" + imgId + "@2x.png"
+            var tempImgUrl = "https://openweathermap.org/img/wn/" + imgId + "@2x.png"
             $("#day" + counter + "Img").attr("src", tempImgUrl)
             $("#day" + counter + "St").text(data.list[i].weather[0].description)
             $("#day" + counter + "humid").text("Humidity: " + data.list[i].main.humidity + "%")

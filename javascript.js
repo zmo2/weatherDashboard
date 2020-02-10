@@ -4,14 +4,21 @@ $(document).ready(function(){
     var forecastFrontUrl = "https://api.openweathermap.org/data/2.5/forecast?q="
     var geoCoorUrl = "http://api.openweathermap.org/data/2.5/weather?"
     var geoCoorForecast = "http://api.openweathermap.org/data/2.5/forecast?"
+    var uviUrl = "https://api.openweathermap.org/data/2.5/uvi?"
     var apiKey = "&units=imperial&appid=1a6304f914f966e5dc4a8226a424190d" 
+
     var currentLat = ""
     var currentLon = ""
 
     var loadStorage  = JSON.parse(localStorage.getItem("history")) 
 
     if (loadStorage == null){
-    }else{
+    }else if (loadStorage.length>10){
+        for(i=loadStorage.length-10; i<loadStorage.length; i++){
+            historicalSearches[historicalSearches.length] = loadStorage[i]
+            mkbtns(loadStorage[i].name)
+        }
+    } else{
         for(i=0; i<loadStorage.length; i++){
             historicalSearches[historicalSearches.length] = loadStorage[i]
             mkbtns(loadStorage[i].name)
@@ -24,15 +31,26 @@ $(document).ready(function(){
 // when search btn clicked
 $("#searchBtn").on("click", function(){
     var cityName = $("#searchBar").text().trim()
-    var queryURL = frontUrl+cityName+apiKey
-    $.getJSON(queryURL, displayApiDataCurrent)
+    console.log(cityName)
+    console.log(typeof cityName)
+    if(cityName == ""){
+        $("#locationName").text("Please enter City Name")
+        $("#searchBar").text("")
+        return
+    }else {
+        $(".rightSec").show()
+        var queryURL = frontUrl+cityName+apiKey
+        $.getJSON(queryURL, displayApiDataCurrent)
+            
+        queryURL = forecastFrontUrl + cityName + apiKey
+        $.getJSON(queryURL, displayApiDataForecast)
         
-    queryURL = forecastFrontUrl + cityName + apiKey
-    $.getJSON(queryURL, displayApiDataForecast)
-    
-    historicalSearches[historicalSearches.length] = {name: cityName}
-    localStorage.setItem("history", JSON.stringify(historicalSearches) )
-    mkbtns(cityName)
+        historicalSearches[historicalSearches.length] = {name: cityName}
+        localStorage.setItem("history", JSON.stringify(historicalSearches) )
+        mkbtns(cityName)
+
+    $("#searchBar").text("")
+    }
 })
 
 //looking out for any clicks on .searchHis class btns
@@ -42,6 +60,7 @@ $(document).on("click", ".searchHis", temp)
 
 //gets current and forecast data on button click based on button text (for historical searches)
 function getsWeatherbyCity(city){
+    $(".rightSec").show()
     var queryURL = frontUrl+city+apiKey
     $.getJSON(queryURL, displayApiDataCurrent)
     queryURL = forecastFrontUrl + city + apiKey
@@ -53,6 +72,7 @@ function temp(){
     $.getJSON(queryURL, displayApiDataCurrent)
     queryURL = forecastFrontUrl + $(this).text() + apiKey
     $.getJSON(queryURL, displayApiDataForecast)
+    $("#searchBar").text("")
 }
 
 //make new buttons with each city searched
@@ -64,6 +84,7 @@ function mkbtns(city){
 
 //function to run when current location is obtained
 function success(position) {
+    $(".rightSec").show()
     currentLat = "lat=" + position.coords.latitude
     currentLon = "lon=" + position.coords.longitude
     queryURL = geoCoorUrl + currentLat + "&" + currentLon + apiKey
@@ -97,6 +118,12 @@ function displayApiDataCurrent (data){
                     $("#lowTemp").text("Low Temp (F): " + data.main.temp_min)
                     $("#currentTemp").text("Current Temp (F): " + data.main.temp)
                     $("#humid").text("Humidity: " + data.main.humidity +"%")
+                    currentLat = "lat=" + data.coord.lat
+                    currentLon = "lon=" + data.coord.lon
+                    var queryURL = uviUrl + currentLat + "&" + currentLon + apiKey
+                    $.getJSON(queryURL,function(response){
+                        $("#uv").text("UV Index: "+response.value)
+                    })
 }
 
 //displays forecast data onto page

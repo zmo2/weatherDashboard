@@ -21,6 +21,10 @@
     background-color: rgb(230, 233, 229);
 }
 
+.rightSec{
+    display: none;
+}
+
 .forecastSec{
     background-color:rgb(230, 233, 229);
    

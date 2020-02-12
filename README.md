@@ -10,4 +10,6 @@ If the user denies the location request, the site will get the last address the 
 
 This site also stores the last 10 user searches into local storage and show them under the searchbar. User can click on the buttons of these historical searches to get quick access to weather information in these locations. 
 
-https://user-images.githubusercontent.com/34842627/74295137-fa1a9a00-4cf4-11ea-8e0a-c43c6b76770a.jpg
+
+![alt text](https://user-images.githubusercontent.com/34842627/74295137-fa1a9a00-4cf4-11ea-8e0a-c43c6b76770a.jpg)
+
